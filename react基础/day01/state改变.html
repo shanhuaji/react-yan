@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script type="text/babel">
+      class Type extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            count: 2,
+          };
+        }
+        clickHandler = () => {
+          /* this.setState({
+            count: ++this.state.count,
+          }); */
+          this.setState(
+            ({ count }) => {
+              count++;
+
+              return { count };
+            },
+            () => {
+              console.log(this.state.count);
+            }
+          );
+        };
+        render() {
+          let { count } = this.state;
+          return (
+            <div>
+              <button onClick={this.clickHandler}>点击</button>
+              <span>{count}</span>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Type></Type>, document.querySelector("#box"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Function.prototype._bind = function () {
+        var _this = this, // 保存调用bind的对象
+          arr = Array.prototype.shift.call(arguments), // 调用函数的对象
+          newArr = Array.prototype.slice.call(arguments); // 剩余的参数放在一个数组中
+        return function () {
+          /* 返回一个新函数 将6, 5和4合并为一个数组 */
+          _this.apply(
+            arr,
+            Array.prototype.concat.call(
+              newArr,
+              Array.prototype.slice.call(arguments)
+            )
+          );
+        };
+      };
+
+      function fn(a, b, c) {
+        console.log(`${this.name},${a},${b},${c}`);
+      }
+
+      var obj = {
+        name: "admin",
+      };
+
+      fn._bind(obj, 6, 5)(4);
+    </script>
+  </body>
+</html>

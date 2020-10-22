@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <div id="boxclass"></div>
+    <script type="text/babel">
+      function App() {
+        let bool = false;
+        return bool ? <div>真</div> : <div>假</div>;
+      }
+      ReactDOM.render(<App></App>, document.querySelector("#box"));
+      /* 类 */
+      let { Component } = React;
+      class Son extends Component {
+        render() {
+          let bool = false;
+          return bool ? <div>真类</div> : <div>假类</div>;
+        }
+      }
+      ReactDOM.render(<Son></Son>, document.querySelector("#boxclass"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script type="text/babel">
+      let { Component } = React;
+      class Type extends Component {
+        static defaultProps = {
+          username: "admin",
+        };
+        fn = () => {
+          let {
+            username,
+            children: { a },
+          } = this.props;
+          console.log(username);
+          console.log(this.props.children.props.a);
+        };
+        render() {
+          let { children, a } = this.props;
+          return (
+            <div>
+            
+              <button onClick={this.fn}>点击</button>
+              {children}
+            </div>
+          );
+        }
+      }
+      /* 在子组件中定义静态方法 this.props.children.props父组件中接收 */
+      class Son extends Component {
+        constructor(props) {
+          super(props);
+        }
+        static defaultProps = {
+          a: "子组件",
+        };
+        render() {
+          return <div>子元素</div>;
+        }
+      }
+      ReactDOM.render(
+        <Type>
+          <Son></Son>
+        </Type>,
+        document.querySelector("#box")
+      );
+    </script>
+  </body>
+</html>

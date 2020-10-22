@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <div id="one"></div>
+    <script type="text/babel">
+      let { Component } = React;
+      class Type extends Component {
+        hander(b) {
+          console.log(b);
+        }
+        fn = (a) => {
+          console.log(a);
+        };
+        render() {
+          return (
+            <div>
+              <button onClick={() => this.fn(20)}>传参</button>
+              <button onClick={this.hander.bind(this, 30)}>普通传参</button>
+              <button
+                onClick={() => {
+                  this.hander(40);
+                }}
+              >
+                普通套箭头传参
+              </button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Type></Type>, document.querySelector("#box"));
+
+      function clickHandler(e, a) {
+        console.log(e);
+        console.log(a);
+      }
+      function Fn() {
+        return (
+          <button
+            onClick={() => {
+              clickHandler(event, 20);
+            }}
+          >
+            点击
+          </button>
+        );
+      }
+
+      ReactDOM.render(<Fn></Fn>, document.querySelector("#one"));
+    </script>
+  </body>
+</html>

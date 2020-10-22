@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <div id="classbox"></div>
+    <script type="text/babel">
+      function Son() {
+        let arr = [
+          {
+            id: "1",
+            msg: "内容1",
+          },
+          {
+            id: "2",
+            msg: "内容2",
+          },
+        ];
+        return (
+          <div>
+            <ul>
+              {arr.map((item) => {
+                return <li key={item.id}>{item.msg}</li>;
+              })}
+            </ul>
+          </div>
+        );
+      }
+      ReactDOM.render(<Son></Son>, document.querySelector("#box"));
+      /* 类 */
+      let { Component } = React;
+      class App extends Component {
+        render() {
+          let arr = [
+            {
+              id: "1",
+              msg: "内容1",
+            },
+            {
+              id: "2",
+              msg: "内容2",
+            },
+          ];
+          return (
+            <ul>
+              {arr.map((item) => {
+                return <li key={item.id}>{item.msg}</li>;
+              })}
+            </ul>
+          );
+        }
+      }
+      ReactDOM.render(<App></App>, document.querySelector("#classbox"));
+    </script>
+  </body>
+</html>

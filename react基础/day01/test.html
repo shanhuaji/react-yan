@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+   
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script type="text/babel">
+    /* let { Component } = React;
+    class Type extends Component {
+      render() {
+          let {children} = this.props
+        return (
+          <div>
+            Hello React World
+            {children}
+          </div>
+        );
+      }
+    }
+    class Two extends Component {
+      render() {
+        return <div>子组件</div>;
+      }
+    }
+    class Three extends Component {
+      render() {
+        return <div>第二个子组件</div>;
+      }
+    }
+    ReactDOM.render(
+      <Type>
+        <Two></Two>
+        <Three></Three>
+      </Type>,
+      document.querySelector("#root")
+    ); */
+    // let {Component} = React
+    /*  function Father({ children }) {
+      return (
+        <div>
+          <i>父组件</i>
+          {children}
+        </div>
+      );
+    }
+    function Type() {
+      return <div>子组件</div>;
+    }
+    ReactDOM.render(
+      <Father>
+        <Type></Type>
+      </Father>,
+      document.querySelector("#app")
+    ); */
+    /*  let App = (
+      <React.Fragment>
+        <div>元素</div>
+        <span>123</span>
+      </React.Fragment>
+    );
+    ReactDOM.render(App, document.querySelector("#app")); */
+    /*  <Fragment>
+          <div>元素</div>
+          <span>123</span>
+          {str}
+          {html}
+          <img src="{pic}" alt="">
+        </Fragment> */
+
+    /*  let {Fragment} = React
+    let str = '字符串'
+    let xml = '<div><span>html标签</span></div>'
+    function Type(){
+        return <Fragment>
+                {str}<br/>
+                {xml}<br/>
+                <div>分割线</div><br/>
+                <div dangerouslySetInnerHTML={{__html:xml}} />
+            </Fragment>
+    }
+    ReactDOM.render(<Type></Type>,document.querySelector("#app")) */
+    let str = "字符串";
+    let xml = "<div>11111111</div>";
+    let { Component } = React;
+
+    class Type extends Component {
+      render() {
+        let { children } = this.props;
+        return (
+          <div>
+            <i>父元素</i>
+            {children}
+          </div>
+        );
+      }
+    }
+    let { Fragment } = React;
+    let App = (
+      <Fragment>
+        <div>插入元素</div>
+      </Fragment>
+    );
+
+    class Son extends Component {
+      render() {
+        return (
+          <React.Fragment>
+            <div>
+              <span>子元素</span>
+              <div id="a"></div>
+            </div>
+            {str}
+            <div dangerouslySetInnerHTML={{ __html: xml }} />
+          </React.Fragment>
+        );
+      } 
+    }
+    ReactDOM.render(
+      <Type>
+        <Son></Son>
+      </Type>,
+      document.querySelector("#app")
+    );
+    ReactDOM.render(App, document.querySelector("#a"));
+  </script>
+</html>

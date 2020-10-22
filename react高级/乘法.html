@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function decodeString(str) {
+        let stack = []; /* 最终结果数组 */
+        for (let i = 0; i < str.length; i++) {
+          const cell = str[i];
+          if (cell !== "]") {
+            stack.push(cell); //去除]
+          } else {
+            let count = []; /* 数字 */
+            let popCell = ""; //循环个数
+            let loopArr = []; //字母
+            let loopStr = "";
+            /* 最后一个不是[就删除  并添加到数组中 */
+            while ((popCell = stack.pop()) !== "[") {
+              loopArr.unshift(popCell);
+            }
+            // 循环输出count
+            while (
+              stack[stack.length - 1] >= 0 &&
+              stack[stack.length - 1] <= 9
+            ) {
+              count.unshift(stack.pop());
+            }
+            count = parseInt(count.join(""));
+            console.log(count);
+            for (let j = 0; j < count; j++) {
+              loopStr += loopArr.join("");
+            }
+            stack.push(...loopStr.split("")); //结果放在最后的数组中
+          }
+        }
+        return stack.join("");
+      }
+
+      const str = "3[a2[c]]";
+      console.log(decodeString(str));
+    </script>
+  </body>
+</html>

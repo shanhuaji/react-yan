@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script type="text/babel">
+     let {useState} = React
+     function Fn(){
+         let [count] = useState(0)
+         let [a] = useState(2)
+         return <div>
+                <span>{count}</span>
+                <span>{a}</span>
+            </div>
+     }
+     ReactDOM.render(<Fn></Fn>,document.querySelector("#box"))
+
+     /* 类定义 */
+     let {Component} = React
+     class Type extends Component{
+         constructor(props){
+             super(props)
+             this.state=({
+                count:0
+             })
+         }
+         /* state = {
+             count:0
+         } */
+         render(){
+             let {count} = this.state
+             return <div>{count}</div>
+         }
+     }
+     ReactDOM.render(<Type></Type>,document.querySelector("#box1"))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      opacity: 0;
+      transition: 3s 0s all ease;
+      margin-bottom: 10px;
+    }
+    .box2 {
+      width: 0px;
+      height: 0px;
+    }
+    .box2:hover .box1 {
+      transition: 3s 0s all ease;
+      opacity: 1;
+    }
+    /* 遮罩层 */
+    .content {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      top: 0;
+    }
+  </style>
+  <body>
+    <div class="box2">
+      <div class="box1"></div>
+      <span>?</span>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="content"></div>
+  </body>
+</html>

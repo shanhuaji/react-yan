@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      width: 0px;
+      height: 0px;
+      /* border-left: 50px solid red; */
+      border-left: 100px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 50px solid red;
+    }
+  </style>
+  <body>
+    <div class="box"></div>
+    <script>
+      let arr = [1, 23, 42, 3, 4, 2, 1, 5];
+      /* for (let i = 0; i < arr.length - 1; i++) {
+              for (let j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                  [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                }
+              }
+            }
+            console.log(arr); */
+      /* 选择排序 */
+      /* for (let i = 0; i < arr.length; i++) {
+              let minindex = i;
+              let minvalue = arr[minindex];
+              for (let j = i + 1; j < arr.length; j++) {
+                if (arr[j] < minvalue) {
+                  minvalue = arr[j];
+                  minindex = j;
+                }
+              }
+              if (minindex !== i) {
+                [arr[i], arr[minindex]] = [arr[minindex], arr[i]];
+              }
+            }
+            console.log(arr); */
+      /* 快速排序 */
+      function arrsort(arr) {
+        if (arr.length < 1) return arr;
+        let index = parseInt(arr.length / 2);
+        let value = arr.splice(index, 1);
+        let left = [];
+        let right = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (value[0] > arr[i]) {
+            left.push(arr[i]);
+          } else {
+            right.push(arr[i]);
+          }
+        }
+        return arrsort(left).concat(value[0], arrsort(right));
+      }
+      console.log(arrsort(arr));
+      let str = "sdfdsfser";
+      console.log(str.match("s"));
+      /*
+              查找 charAt search match indexof
+              截取 slice substr substring
+              split
+              charcodeat  string.formCharcode()  replace  trim concat
+            */
+      /*
+            event window.event  stoppropagtion consoleBable=true  preventDefault returnvalue getcomputedstyle currentstyle
+            keykode witch etarget srcelement
+           */
+      /*
+           异步的服务器通信，无刷新更新数据，前后端分离，基于标准被广泛的支持
+           干掉了history，back功能，破坏了浏览器机制，存在安全问题，不能被移动端很好的支持
+          */
+      /*  let ajax = new XMLHttpRequest();
+            ajax.open();
+            ajax.send();
+            ajax.onreadystatechange = function () {
+              if (ajax.readyState === 4) {
+                if (ajax.state === 200) {
+                  console.log(ajax.statusText);
+                }
+              }
+            }; */
+      /* vue对比react
+            vue和react都是通过vdom操作页面的，都支持组件化，都是JavaScript的ui框架，只是一个骨架，路由和状态管理都分离出去了
+            vue是双向数据绑定，react是单向数据流的
+            vue的vdom改变较快，vue是对每个组件进行跟踪，vdom改变不会渲染整个组件树，react状态改变整个子组件都会重新渲染，可以通过shouldcomponentdidupdata俩设置
+            vue的HTML css JavaScript都是写在同一个页面  react的JavaScript和jsx写在同一个页面
+            vue使用的是更接近HTML的语法，react使用的是jsx语法
+            vue通过vue-cli构建， react通过cra构建，较为麻烦
+            状态管理，react是单向数据流，状态的改变需要通过setState来设置，vue的状态都存放data中，是通过数据的劫持和事件的订阅发布来事件的数据双向绑定的
+
+           */
+      /* react优缺点
+              使用vdom 节省性能，更快，解决浏览器兼容的问题，单向数据流 控制更加方便 一切都是组件，维护方便，重用
+              react只是V  需要使用其它框架来配合
+           */
+      /* react生命周期 */
+      /* constructor  componentwillmount  render componentDidMount  componentwillreceiveprops shouldcomponentdidupdata
+            componentwillupdata  componentdidupdata componentwillunmount componentdidcatch
+            */
+      /* Redux 流程
+            是单向数据流，所有的state状态都存放在object tree中  需要通过action来改变，action是一个普通的事件函数，状态只需要发出改变的意愿，就会集中进行统一的处理
+            使用一个纯函数reducer，接收之前的state和action，并返回新得state  应用过大可以将reducer分成若干个小的部分
+           */
+      /* Es6
+           let const 模块化 promise 箭头函数 解构赋值 set map
+           */
+      /* 异步操作
+            回调函数 事件侦听 订阅发布 promise async/await
+           */
+      /* 虚拟dom diff算法
+              使用对象来构建dom节点
+              比较虚拟dom
+              获取数据 生成虚拟dom  使用render函数解析jsx语法，生成vdom并转为真实dom  数据改变 生成虚拟dom，比较生成patch补丁对象，生成真实dom渲染页面
+           */
+      /* setState
+              改变状态  在真实dom中是同步的  第一个参数是对象是同步的  参数是回调函数是异步的  不需要依赖之前的数据 选用对象 反之 函数
+           */
+      /* 本地存储
+            cookie 客户端存储  大小4K左右 可以设置存储时间
+            本地存储 大小5M左右 一个是会话关闭即清除 另一个是永久性存储
+           */
+      /* react路由传参
+           params search 刷新后数据不丢失，传参不优雅，过多url丑陋
+           state query  传参优雅 刷新后数据丢失 传参优雅
+           */
+      /* Eventloop    浏览器与Node的事件循环(Event Loop)有何区别
+           浏览器 是在宏任务执行完成之后执行微任务
+           node  是在事件循环的各个阶段执行微任务
+           */
+      /* node.js
+            是一个基于谷歌v8引擎的JavaScript运行环境
+            是一个事件驱动、非阻塞I/O的模型 异步，轻量
+            缺点 单线程 单进程 无法使用多核cpu  一旦进程崩掉，整个web服务也崩掉
+          */
+      /*
+           Event Loop 是事件循环，是指浏览器或node解决JavaScript单线程的阻塞的一种机制
+           单线程：所有的程序都在主线程上运行，导致页面卡死
+           Event Loop 解决JavaScript单线程阻塞，程序分为主线程和Event Loop 线程两个线程
+           当遇到I/O时，主线程会让Event Loop 通知其他程序，主线程任务会继续向后执行，等待i/o执行完成后，会将结果返回给主线程，主线程通过回调函数获取结果，完成程序的执行
+
+           */
+
+      /*
+           let const  promise class类 extens 解构赋值 扩展运算符  map set 模板字符串  模块化 箭头函数等等
+           */
+      /*
+            同步的任务放在主线程中，异步的放在event table中，并注册函数
+            当指定的事情完成后，将event table的任务放在event quequ中，
+            主线程的任务执行完成后，读取event quequ中对应的函数，并在出现成中执行，
+            不断的循环上述的过程，形成了事件循环
+            微任务放在微任务对象，宏任务放在宏任务队列
+            先执行主线程的任务，再执行微任务，然后执行宏任务
+          */
+
+      /* 异步操作 */
+      /* 回到函数  Promise  async/await  生成器函数    事件侦听 */
+      /*
+           proxy修改某个操作的默认行为，即对编程语言的层面进行修改，称为元编程，proxy称为代理，访问对象前都会经过一层拦截，执行proxy中的方法
+           get 拦截某个读取属性的操作
+           set 拦截某个属性赋值的操作
+           has 拦截查找某个属性的操作
+          */
+
+      /* 优化 */
+      /* 雪碧图  webpack cdn  优化dom操作  减少重绘回流 重绘是元素的尺寸，布局，隐藏等变化，导致页面的重新构建，称为回流 重绘只是外表发生变化，不影响布局 重绘必将引起回流，回流不一定会重绘 */
+      /*
+            垃圾回收机制是基于分代回收机制，而分代回收机制是基于世代假说，世代假说分类新生代、老生代，新生代中分为form和to空间
+            当form空间满时，则触发垃圾垃圾回收机制，检测form空间中的对象是否存活，存活则检测是否可以晋升老生代，不可晋升的存放在to空间中
+            回收未存活的对象，释放空间
+            最后to和form空间中的进行角色互换
+            运行垃圾回收机制会导致逻辑状态暂停，等待机制完成后再运行
+            判断新老生代
+            查看是否经历过一次垃圾回收机制，经历就晋升老生代
+            查看to的空间是否达到上限25%，为了留有足够的空间进行角色互换
+            标记清除和标记压缩
+            对存活的对象添加标记，清除没有添加标记的对象，释放空间，添加标记，会产生很多内存碎片，这里我们引入了标记压缩法
+            由于垃圾回收机制执行期间会暂停逻辑状态，新生代体积小，影响较小，老生代的体积大，影响较大，我们将其分为多步，每执行一步则执行一会逻辑状态，一直交替运行
+
+          */
+      /*  Function.prototype._bind = function (obj) {
+        let _this = this;
+        console.log(_this);
+        return function () {
+          _this.apply(obj);
+        };
+      };
+      function fn(m) {
+        console.log(this.name,m);
+      }
+      let obj = {
+        name: "admin",
+      };
+      console.log(fn._bind(obj,1)()); */
+      Function.prototype._bind = function () {
+        var _this = this, // 保存调用bind的对象
+          arr = Array.prototype.shift.call(arguments), // 调用函数的对象
+          newArr = Array.prototype.slice.call(arguments); // 剩余的参数放在一个数组中
+        return function () {
+          console.log(arr);
+          /* 返回一个新函数 将7, 8和9合并为一个数组 */
+          _this.apply(
+            arr,
+            Array.prototype.concat.call(
+              newArr,
+              Array.prototype.slice.call(arguments)
+            )
+          );
+        };
+      };
+
+      function fn(a, b, c) {
+        console.log(`${this.name},${a},${b},${c}`);
+      }
+
+      var obj = {
+        name: "admin",
+      };
+
+      fn._bind(obj, 7, 8)(9);
+      let a = 6;
+      let pro = new Promise((resolve, reject) => {
+        console.log(a);
+        if (a > 5) {
+          console.log(1111);
+          resolve();
+        } else {
+          reject();
+        }
+      });
+      pro
+        .then(() => {
+          console.log("成功");
+        })
+        .catch(() => {
+          console.log("失败", "promise");
+        });
+      /*  let str = '3[a2[c]]' */
+
+      function decodeString(str) {
+        let stack = [];/* 最终结果数组 */
+        for (let i = 0; i < str.length; i++) {
+          const cell = str[i];
+          if (cell !== "]") {
+            stack.push(cell); //去除]
+          } else {
+            let count = [];/* 数字 */
+            let popCell = ""; //循环个数
+            let loopArr = [];//字母
+            let loopStr = ""; 
+            /* 最后一个不是[就删除  并添加到数组中 */
+            while ((popCell = stack.pop()) !== "[") {
+              loopArr.unshift(popCell);
+            }
+            // 循环输出count
+            while (
+              stack[stack.length - 1] >= 0 &&
+              stack[stack.length - 1] <= 9
+            ) {
+              count.unshift(stack.pop());
+            }
+            count = parseInt(count.join(""));
+            console.log(count);
+            for (let j = 0; j < count; j++) {
+              loopStr += loopArr.join("");
+            }
+            stack.push(...loopStr.split("")); //结果放在最后的数组中
+          }
+        }
+        return stack.join("");
+      }
+
+      const str = "3[a2[c]]";
+      console.log(decodeString(str));
+    </script>
+  </body>
+</html>

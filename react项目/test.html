@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(!!null);
+      /* 
+      promise是一个异步的处理机制，代替了事件和回调函数，更合理，更强到。
+      常用于延迟计算和异步计算，是一个目前暂未执行，未来一定会执行的操作
+      promise是一个返回的代理，定义时状态是未知的，允许在成功和失败时分别执行操作
+      有三种状态pedding  filelled reject
+      特点：是异步的，不受外界的影响
+           状态从pedding到resolve和reject，一但发生改变就会凝固
+           状态从pedding到resolve  会执行对应的then方法  then方法是可以链式调用的
+           状态从pedding到reject  会执行对应的catch方法
+           无论执行成功还是失败 都会执行finally方法
+           promise有静态方法all和race  
+           all:通过多个实例合成一个新的promise实例，参数是一个数组，所有的状态都是resolve 才是resolve
+
+           async/await
+           async是一个修饰函数，被修饰的函数变成一个promise 拥有then和catch的方法，async是异步的，可以让后边的
+           函数继续执行，await同步的，只能在async中使用，阻塞程序等待await执行完成，返回resolve，抛出异常等于返回resolve
+           字面整洁 ，在catch中处理json.prace错误  可以使用条件语句
+       */
+      /* 
+     200成功
+     302  请求资源临时从不同的url响应
+     304 带有条件，请求允许，文档未改变
+     301  请求资源永久移动到新的位置
+     300  多个请求资源地址
+      */
+      /* 
+     constructor  componentwillmount render componentdidmount componentwillresaveprops shouldcomponentdidmount
+     componentwillupdata cpmonentdidupdata componentwillunmount componentdidcatch
+     */
+      let arr = [1, 2, 3, 4, 5];
+      let a = arr.map((item) => {
+        return (item = item + item * 0.5);
+      });
+      console.log(arr);
+      console.log(a);
+    </script>
+  </body>
+</html>
