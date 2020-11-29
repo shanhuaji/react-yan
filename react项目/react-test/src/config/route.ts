@@ -6,7 +6,7 @@ export default [
       name: '首页', // 兼容此写法
       icon: 'HomeOutlined',
     },
-    breadcrumbName:'首页',
+    breadcrumbName: '首页',
   },
   /* 详情页 */
   {
@@ -15,7 +15,7 @@ export default [
       name: '详情页', // 兼容此写法
       icon: 'AppstoreOutlined',
     },
-    breadcrumbName:'详情页',
+    breadcrumbName: '详情页',
     routes: [
       {
         path: './phonedetails',
@@ -24,7 +24,7 @@ export default [
           name: '手机详情', // 兼容此写法
           icon: 'AndroidOutlined',
         },
-        breadcrumbName:'手机详情',
+        breadcrumbName: '手机详情',
       },
       {
         path: './shopdetails',
@@ -33,7 +33,7 @@ export default [
           name: '商品详情', // 兼容此写法
           icon: 'DribbbleOutlined',
         },
-        breadcrumbName:'商品详情',
+        breadcrumbName: '商品详情',
       },
     ],
   },
@@ -44,7 +44,7 @@ export default [
       name: '表单页',
       icon: 'DotChartOutlined',
     },
-    breadcrumbName:'表单页',
+    breadcrumbName: '表单页',
     routes: [
       {
         path: './staff',
@@ -53,7 +53,7 @@ export default [
           name: '员工列表',
           icon: 'DingdingOutlined',
         },
-        breadcrumbName:'员工列表',
+        breadcrumbName: '员工列表',
       },
       {
         path: './visitor',
@@ -62,7 +62,7 @@ export default [
           name: '访客列表',
           icon: 'WeiboSquareOutlined',
         },
-        breadcrumbName:'访客列表',
+        breadcrumbName: '访客列表',
       },
     ],
   },
@@ -73,7 +73,7 @@ export default [
       name: '列表页',
       icon: 'GithubOutlined',
     },
-    breadcrumbName:'列表页',
+    breadcrumbName: '列表页',
     routes: [
       {
         path: '/list/onelist',
@@ -83,11 +83,11 @@ export default [
           icon: 'AlipayOutlined',
         },
         access: 'canReadFoo',
-        breadcrumbName:'一级列表',
-        params:{
-          name:'列表页',
-          username:"一级列表"
-        }
+        breadcrumbName: '一级列表',
+        params: {
+          name: '列表页',
+          username: '一级列表',
+        },
       },
       {
         path: '/list/twolist',
@@ -96,11 +96,11 @@ export default [
           name: '二级列表',
           icon: 'ZhihuOutlined',
         },
-        breadcrumbName:'二级列表',
-        params:{
-          name:'列表页',
-          username:"二级列表"
-        }
+        breadcrumbName: '二级列表',
+        params: {
+          name: '列表页',
+          username: '二级列表',
+        },
       },
       {
         path: '/list/threelist',
@@ -109,11 +109,19 @@ export default [
           name: '三级列表',
           icon: 'ZhihuOutlined',
         },
-        breadcrumbName:'三级列表',
-        params:{
-          name:'列表页',
-          username:"三级列表"
-        }
+        breadcrumbName: '三级列表',
+        params: {
+          name: '列表页',
+          username: '三级列表',
+        },
+      },
+      {
+        path: '/list/forelist',
+        component: '@/pages/List/forelist',
+        menu: {
+          name: '四级列表',
+          icon: 'ZhihuOutlined',
+        },
       },
     ],
   },
